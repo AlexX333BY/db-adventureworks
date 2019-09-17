@@ -6,6 +6,12 @@ SELECT COUNT(*) AS DepartmentCount from HumanResources.Department
     where GroupName = 'Executive General and Administration';
 GO
 
---2
+-- 2
 SELECT TOP 5 BusinessEntityID, JobTitle, Gender, BirthDate FROM HumanResources.Employee ORDER BY BirthDate DESC;
+GO
+
+-- 3
+SELECT BusinessEntityID, JobTitle, Gender, HireDate, 
+    REPLACE(LoginID, 'adventure-works', 'adventure-works2012') AS LoginID FROM HumanResources.Employee 
+    WHERE Gender = 'F' AND DATENAME(weekday, HireDate) = 'Tuesday';
 GO
