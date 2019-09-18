@@ -12,7 +12,7 @@ FROM
         ON (Employee.BusinessEntityId = EmployeePayHistory.BusinessEntityId)
 GROUP BY
     EmployeePayHistory.BusinessEntityID,
-    JobTitle
+    JobTitle;
 GO
 
 -- 2
@@ -28,7 +28,7 @@ FROM
     INNER JOIN HumanResources.EmployeeDepartmentHistory
         ON (Employee.BusinessEntityID = EmployeeDepartmentHistory.BusinessEntityID)
     INNER JOIN HumanResources.Department
-        ON (EmployeeDepartmentHistory.DepartmentID = Department.DepartmentID)
+        ON (EmployeeDepartmentHistory.DepartmentID = Department.DepartmentID);
 GO
 
 -- 3
@@ -47,4 +47,5 @@ FROM
         ON (Employee.BusinessEntityID = EmployeeDepartmentHistory.BusinessEntityID)
     INNER JOIN HumanResources.Department
         ON (EmployeeDepartmentHistory.DepartmentID = Department.DepartmentID)
-WHERE EndDate IS NULL
+WHERE EndDate IS NULL;
+GO
