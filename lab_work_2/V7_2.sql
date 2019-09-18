@@ -7,7 +7,7 @@ CREATE TABLE dbo.PersonPhone
     BusinessEntityID INT,
     PhoneNumber Phone,
     PhoneNumberTypeID INT,
-    ModifiedDate DATETIME DEFAULT (GETDATE())
+    ModifiedDate DATETIME)
 );
 GO
 
