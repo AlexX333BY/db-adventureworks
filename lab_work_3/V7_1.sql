@@ -12,8 +12,8 @@ DECLARE @PersonPhoneVar TABLE
 (
     BusinessEntityID INT NOT NULL,
     PhoneNumber Phone NOT NULL,
-    PhoneNumberTypeID BIGINT,
-    ModifiedDate DATETIME DEFAULT (GETDATE()),
+    PhoneNumberTypeID BIGINT NULL,
+    ModifiedDate DATETIME,
     PostalCode NVARCHAR(15) DEFAULT ('0'),
     City NVARCHAR(30)
 );
