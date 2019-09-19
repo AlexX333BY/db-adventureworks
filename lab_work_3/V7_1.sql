@@ -2,9 +2,10 @@ USE AdventureWorks2012;
 GO
 
 -- 1
-ALTER TABLE dbo.PersonPhone
-    ADD
-        City NVARCHAR(30);
+ALTER TABLE
+    dbo.PersonPhone
+ADD
+    City NVARCHAR(30);
 GO
 
 -- 2
@@ -17,8 +18,8 @@ DECLARE @PersonPhoneVar TABLE
     PostalCode NVARCHAR(15) DEFAULT ('0'),
     City NVARCHAR(30)
 );
-INSERT
-    INTO @PersonPhoneVar
+INSERT INTO
+    @PersonPhoneVar
     (
         BusinessEntityID,
         PhoneNumber,
@@ -27,19 +28,19 @@ INSERT
         PostalCode,
         City
     )
-    SELECT
-        dbo.PersonPhone.BusinessEntityID,
-        dbo.PersonPhone.PhoneNumber,
-        dbo.PersonPhone.PhoneNumberTypeID,
-        dbo.PersonPhone.ModifiedDate,
-        IIF (Person.Address.PostalCode NOT LIKE '%[^0-9]%', Person.Address.PostalCode, '0'),
-        Person.Address.City
-    FROM
-        dbo.PersonPhone
-        LEFT JOIN Person.BusinessEntityAddress
-            ON (dbo.PersonPhone.BusinessEntityID = Person.BusinessEntityAddress.BusinessEntityID)
-        LEFT JOIN Person.Address
-            ON (BusinessEntityAddress.AddressID = Address.AddressID);
+SELECT
+    dbo.PersonPhone.BusinessEntityID,
+    dbo.PersonPhone.PhoneNumber,
+    dbo.PersonPhone.PhoneNumberTypeID,
+    dbo.PersonPhone.ModifiedDate,
+    IIF (Person.Address.PostalCode NOT LIKE '%[^0-9]%', Person.Address.PostalCode, '0'),
+    Person.Address.City
+FROM
+    dbo.PersonPhone
+    LEFT JOIN Person.BusinessEntityAddress
+        ON (dbo.PersonPhone.BusinessEntityID = Person.BusinessEntityAddress.BusinessEntityID)
+    LEFT JOIN Person.Address
+        ON (BusinessEntityAddress.AddressID = Address.AddressID);
 
 -- 3
 UPDATE
@@ -58,7 +59,8 @@ FROM
 GO
 
 -- 4
-DELETE PersonPhoneTable
+DELETE
+    PersonPhoneTable
 FROM
     dbo.PersonPhone PersonPhoneTable
     INNER JOIN Person.Person
@@ -68,15 +70,19 @@ WHERE
 GO
 
 -- 5
-ALTER TABLE dbo.PersonPhone
-    DROP COLUMN City;
-ALTER TABLE dbo.PersonPhone
-    DROP CONSTRAINT
-        PK_PersonPhone_BusinessEntityID_PhoneNumber,
-        CK_PersonPhone_PostalCode,
-        DF_PersonPhone_PostalCode;
+ALTER TABLE
+    dbo.PersonPhone
+DROP COLUMN
+    City;
+ALTER TABLE
+    dbo.PersonPhone
+DROP CONSTRAINT
+    PK_PersonPhone_BusinessEntityID_PhoneNumber,
+    CK_PersonPhone_PostalCode,
+    DF_PersonPhone_PostalCode;
 GO
 
 -- 6
-DROP TABLE dbo.PersonPhone;
+DROP TABLE
+    dbo.PersonPhone;
 GO

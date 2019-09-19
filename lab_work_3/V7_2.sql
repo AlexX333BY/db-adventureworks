@@ -4,11 +4,12 @@
 USE AdventureWorks2012;
 GO
 
-ALTER TABLE dbo.PersonPhone
-    ADD
-        OrdersCount INT,
-        CardType NVARCHAR(50),
-        IsSuperior AS IIF (CardType = 'SuperiorCard', 1, 0);
+ALTER TABLE
+    dbo.PersonPhone
+ADD
+    OrdersCount INT,
+    CardType NVARCHAR(50),
+    IsSuperior AS IIF (CardType = 'SuperiorCard', 1, 0);
 GO
 
 -- 2
@@ -36,8 +37,8 @@ AS
     GROUP BY
         CreditCardID
 )
-INSERT
-    INTO #PersonPhone
+INSERT INTO
+    #PersonPhone
     (
         BusinessEntityID,
         PhoneNumber,
@@ -47,28 +48,30 @@ INSERT
         OrdersCount,
         CardType
     )
-    SELECT
-        dbo.PersonPhone.BusinessEntityID,
-        dbo.PersonPhone.PhoneNumber,
-        dbo.PersonPhone.PhoneNumberTypeID,
-        dbo.PersonPhone.ModifiedDate,
-        dbo.PersonPhone.PostalCode,
-        OrdersCount_CTE.OrdersCount,
-        Sales.CreditCard.CardType
-    FROM
-        dbo.PersonPhone
-        INNER JOIN Sales.PersonCreditCard
-            ON (PersonPhone.BusinessEntityID = PersonCreditCard.BusinessEntityID)
-        INNER JOIN Sales.CreditCard
-            ON (PersonCreditCard.CreditCardID = CreditCard.CreditCardID)
-        INNER JOIN OrdersCount_CTE
-            ON (CreditCard.CreditCardID = OrdersCount_CTE.CreditCardID);
+SELECT
+    dbo.PersonPhone.BusinessEntityID,
+    dbo.PersonPhone.PhoneNumber,
+    dbo.PersonPhone.PhoneNumberTypeID,
+    dbo.PersonPhone.ModifiedDate,
+    dbo.PersonPhone.PostalCode,
+    OrdersCount_CTE.OrdersCount,
+    Sales.CreditCard.CardType
+FROM
+    dbo.PersonPhone
+    INNER JOIN Sales.PersonCreditCard
+        ON (PersonPhone.BusinessEntityID = PersonCreditCard.BusinessEntityID)
+    INNER JOIN Sales.CreditCard
+        ON (PersonCreditCard.CreditCardID = CreditCard.CreditCardID)
+    INNER JOIN OrdersCount_CTE
+        ON (CreditCard.CreditCardID = OrdersCount_CTE.CreditCardID);
+GO
 
 -- 4
 DELETE
 FROM
     #PersonPhone
-WHERE BusinessEntityID = 297;
+WHERE
+    BusinessEntityID = 297;
 
 -- 5
 MERGE
@@ -100,3 +103,4 @@ WHEN NOT MATCHED BY TARGET THEN
     )
 WHEN NOT MATCHED BY SOURCE THEN
     DELETE;
+GO
