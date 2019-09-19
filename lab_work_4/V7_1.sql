@@ -21,9 +21,18 @@ AFTER
     INSERT
 AS
     INSERT INTO
-        Sales.CurrencyHst (Action, SourceID, UserName, ModifiedDate)
+        Sales.CurrencyHst
+        (
+            Action,
+            SourceID,
+            UserName,
+            ModifiedDate
+        )
     SELECT
-        'insert', CurrencyCode, CURRENT_USER, INSERTED.ModifiedDate
+        'insert',
+        CurrencyCode,
+        CURRENT_USER,
+        INSERTED.ModifiedDate
     FROM
         INSERTED;
 GO
@@ -35,9 +44,18 @@ AFTER
     UPDATE
 AS
     INSERT INTO
-        Sales.CurrencyHst (Action, SourceID, UserName, ModifiedDate)
+        Sales.CurrencyHst
+        (
+            Action,
+            SourceID,
+            UserName,
+            ModifiedDate
+        )
     SELECT
-        'update', CurrencyCode, CURRENT_USER, INSERTED.ModifiedDate
+        'update',
+        CurrencyCode,
+        CURRENT_USER,
+        INSERTED.ModifiedDate
     FROM
         INSERTED;
 GO
@@ -49,9 +67,18 @@ AFTER
     DELETE
 AS
     INSERT INTO
-        Sales.CurrencyHst (Action, SourceID, UserName, ModifiedDate)
+        Sales.CurrencyHst
+        (
+            Action,
+            SourceID,
+            UserName,
+            ModifiedDate
+        )
     SELECT
-        'delete', CurrencyCode, CURRENT_USER, DELETED.ModifiedDate
+        'delete',
+        CurrencyCode,
+        CURRENT_USER,
+        DELETED.ModifiedDate
     FROM
         DELETED;
 GO
@@ -85,7 +112,7 @@ UPDATE
     Sales.CurrencyView
 SET
     CurrencyCode = 'BYN',
-    Name = 'New belarusian ruble'
+    Name = 'New Belarusian Ruble'
 WHERE
     CurrencyCode = 'BYR';
 GO
