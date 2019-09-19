@@ -37,15 +37,18 @@ SELECT
     JobTitle,
     Department.Name AS DepName,
     GroupName,
-    CASE
-        WHEN CHARINDEX(' ', GroupName) = 0 THEN GroupName
-        ELSE SUBSTRING(GroupName, 1, CHARINDEX(' ', GroupName))
-    END AS DepGroup
+    IIF
+    (
+        CHARINDEX(' ', GroupName) = 0,
+        GroupName,
+        SUBSTRING(GroupName, 1, CHARINDEX(' ', GroupName))
+    ) AS DepGroup
 FROM
     HumanResources.Employee
     INNER JOIN HumanResources.EmployeeDepartmentHistory
         ON (Employee.BusinessEntityID = EmployeeDepartmentHistory.BusinessEntityID)
     INNER JOIN HumanResources.Department
         ON (EmployeeDepartmentHistory.DepartmentID = Department.DepartmentID)
-WHERE EndDate IS NULL;
+WHERE
+    EndDate IS NULL;
 GO
