@@ -16,15 +16,19 @@ ALTER TABLE
     dbo.PersonPhone
 ALTER COLUMN
     BusinessEntityID INT NOT NULL;
-ALTER
-    TABLE dbo.PersonPhone
+ALTER TABLE
+    dbo.PersonPhone
 ALTER COLUMN
     PhoneNumber Phone NOT NULL;
 GO
 ALTER TABLE
     dbo.PersonPhone
 ADD CONSTRAINT
-    PK_PersonPhone_BusinessEntityID_PhoneNumber PRIMARY KEY (BusinessEntityID, PhoneNumber);
+    PK_PersonPhone_BusinessEntityID_PhoneNumber PRIMARY KEY
+    (
+        BusinessEntityID,
+        PhoneNumber
+    );
 GO
 
 -- 3
@@ -32,7 +36,10 @@ ALTER TABLE
     dbo.PersonPhone
 ADD
     PostalCode NVARCHAR(15)
-    CONSTRAINT CK_PersonPhone_PostalCode CHECK (PostalCode NOT LIKE '%[^0-9]%');
+    CONSTRAINT CK_PersonPhone_PostalCode CHECK
+    (
+        PostalCode NOT LIKE '%[^0-9]%'
+    );
 GO
 
 -- 4
