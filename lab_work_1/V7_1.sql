@@ -8,7 +8,10 @@ GO
 CREATE SCHEMA sales;
 GO
 
-CREATE TABLE sales.Orders (OrderNum INT NULL);
+CREATE TABLE sales.Orders
+(
+    OrderNum INT NULL
+);
 GO
 
 -- 2
