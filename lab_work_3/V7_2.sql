@@ -62,13 +62,13 @@ INSERT
         INNER JOIN Sales.CreditCard
             ON (PersonCreditCard.CreditCardID = CreditCard.CreditCardID)
         INNER JOIN OrdersCount_CTE
-            ON (CreditCard.CreditCardID = OrdersCount_CTE.CreditCardID)
+            ON (CreditCard.CreditCardID = OrdersCount_CTE.CreditCardID);
 
 -- 4
 DELETE
 FROM
     #PersonPhone
-WHERE BusinessEntityID = 297
+WHERE BusinessEntityID = 297;
 
 -- 5
 MERGE
