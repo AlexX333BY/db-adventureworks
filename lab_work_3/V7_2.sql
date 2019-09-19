@@ -1,7 +1,9 @@
+-- 1
+:r ../lab_work_2/V7_2.sql
+
 USE AdventureWorks2012;
 GO
 
--- 1
 ALTER TABLE dbo.PersonPhone
     ADD
         OrdersCount INT,
