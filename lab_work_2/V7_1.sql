@@ -41,7 +41,7 @@ SELECT
     (
         CHARINDEX(' ', GroupName) = 0,
         GroupName,
-        SUBSTRING(GroupName, 1, CHARINDEX(' ', GroupName))
+        SUBSTRING(GroupName, 1, CHARINDEX(' ', GroupName) - 1)
     ) AS DepGroup
 FROM
     HumanResources.Employee
