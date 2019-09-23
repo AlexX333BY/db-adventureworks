@@ -86,7 +86,8 @@ GO
 -- 3
 CREATE VIEW
     Sales.CurrencyView
-    WITH ENCRYPTION
+WITH
+    ENCRYPTION
 AS
     SELECT
         CurrencyCode,
