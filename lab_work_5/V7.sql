@@ -3,7 +3,7 @@ GO
 
 -- 1
 CREATE FUNCTION
-    dbo.FN_GetLastUsdRate(@CurrencyCode nchar(3))
+    dbo.FN_GetLastUsdRate (@CurrencyCode NCHAR(3))
 RETURNS
     MONEY
 AS
@@ -25,7 +25,7 @@ GO
 
 -- 2
 CREATE FUNCTION
-    dbo.FN_GetLargeOrders(@ProductId INT)
+    dbo.FN_GetLargeOrders (@ProductId INT)
 RETURNS
     TABLE
 AS
@@ -60,7 +60,7 @@ DROP FUNCTION
     dbo.FN_GetLargeOrders;
 GO
 CREATE FUNCTION
-    dbo.FN_GetLargeOrders(@ProductId INT)
+    dbo.FN_GetLargeOrders (@ProductId INT)
 RETURNS
     @LargeOrders TABLE
     (
