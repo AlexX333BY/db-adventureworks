@@ -90,7 +90,7 @@ BEGIN
             LineTotal,
             ReceivedQty,
             RejectedQty,
-            StockedQty ,
+            StockedQty,
             ModifiedDate
         )
     SELECT
@@ -103,7 +103,7 @@ BEGIN
         LineTotal,
         ReceivedQty,
         RejectedQty,
-        StockedQty ,
+        StockedQty,
         ModifiedDate
     FROM
         Purchasing.PurchaseOrderDetail
