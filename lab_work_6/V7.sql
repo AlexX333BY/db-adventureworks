@@ -45,4 +45,5 @@ PIVOT
 GO
 
 -- 2
-EXECUTE dbo.EmpCountByShift '[Day],[Evening],[Night]'
+EXECUTE dbo.EmpCountByShift '[Day],[Evening],[Night]';
+GO
