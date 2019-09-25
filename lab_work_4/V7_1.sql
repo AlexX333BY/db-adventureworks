@@ -7,7 +7,7 @@ CREATE TABLE Sales.CurrencyHst
     ID INT IDENTITY(1, 1),
     Action NVARCHAR(6) NOT NULL CHECK (Action IN('insert', 'update', 'delete')),
     ModifiedDate DATETIME NOT NULL DEFAULT GETDATE(),
-    SourceID nchar(3) NOT NULL,
+    SourceID NCHAR(3) NOT NULL,
     UserName Name NOT NULL
 );
 GO
